@@ -1,4 +1,4 @@
-package com.faculdade.album_copa;
+package com.faculdade.albumcopa;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
