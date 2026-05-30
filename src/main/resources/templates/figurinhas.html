@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Figurinhas</title>
+	<link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+
+<body>
+	<header>
+		<a th:href="@{/}">Início</a>
+		<a th:href="@{/figurinhas}">Figurinhas</a>
+	<header>
+	
+	<main>
+		<h1>Todas as figurinhas</h1>					
+		<div class="grid">
+			<div class="figurinha" th:each="f : ${figurinhas}">
+				<span class="tag-rara" th:if="${f.rara}">RARA</span>
+				<h3 th:text="${f.jogador}">Nome</h3>
+				<p th:text="${f.selecao}">Seleção</p>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
+				
+			
