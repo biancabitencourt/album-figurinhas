@@ -25,11 +25,7 @@ public class Usuario {
 	public Long getId()	{
 		return id;
 	}
-	
-	public void setId(Long id)	{
-		this.id = id;
-	}
-	
+		
 	public String getLogin() {
 		return login;
 	}
@@ -42,8 +38,9 @@ public class Usuario {
 		return senha;
 	}
 	
-	public void setSenha(String senha) {
-		this.senha = senha;
+/*	public boolean verificarSenha(String senhaDigitada)	{
+		return new BCryptPasswordEncoder().matches(senhaDigitada, this.senha);
 	}
-
+*/
+	
 }
