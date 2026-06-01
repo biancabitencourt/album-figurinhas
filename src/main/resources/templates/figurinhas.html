@@ -14,7 +14,7 @@
 	<header>
 	
 	<main>
-		<h1>Todas as figurinhas</h1>					
+		<h1 th:text="'Todas as figurinhas de ' + ${session.usuarioLogin}">Todas as figuorinhas</h1>					
 		<div class="grid">
 			<div class="figurinha" th:each="f : ${figurinhas}">
 				<span class="tag-rara" th:if="${f.rara}">RARA</span>
