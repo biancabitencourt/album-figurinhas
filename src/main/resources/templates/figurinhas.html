@@ -20,6 +20,10 @@
 				<span class="tag-rara" th:if="${f.rara}">RARA</span>
 				<h3 th:text="${f.jogador}">Nome</h3>
 				<p th:text="${f.selecao}">Seleção</p>
+				<form th:action="@{/colecao/adicionar}" method="post">
+					<input type="hidden" name="figurinhaId" th:value="${f.id}">
+					<button class="btn" type="submit">Adicionar</button>
+				</form>
 			</div>
 		</div>
 	</main>

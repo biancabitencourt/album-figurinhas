@@ -24,39 +24,17 @@ public class UsuarioService {
 		return usuarioRepository.save(new Usuario(login,senhaHash));
 	}
 	
-/*	public Optional<Usuario> autenticar(String login, String senha)	{
+	public Optional<Usuario> autenticar(String login, String senha)	{
 		return usuarioRepository.findByLogin(login)
 				.filter(u -> encoder.matches(senha, u.getSenha()));
 	}
-*/
 	
-	public Optional<Usuario> autenticar(String login, String senha) {
-
-	    Optional<Usuario> usuario = usuarioRepository.findByLogin(login);
-
-	    System.out.println("Login digitado: " + login);
-
-	    if(usuario.isPresent()) {
-
-	        System.out.println("Usuário encontrado");
-	        System.out.println("Hash banco: " + usuario.get().getSenha());
-
-	        boolean ok = encoder.matches(
-	                senha,
-	                usuario.get().getSenha());
-
-	        System.out.println("Senha válida? " + ok);
-
-	        if(ok) {
-	            return usuario;
-	        }
-
-	    } else {
-
-	        System.out.println("Usuário NÃO encontrado");
-
-	    }
-
-	    return Optional.empty();
+	public Usuario buscarPorId(Long id)	{
+		return usuarioRepository.findById(id).orElseThrow	(
+			() -> new RuntimeException("Usuario nã encontrado"));
 	}
-}
+}	
+	
+
+	
+	
