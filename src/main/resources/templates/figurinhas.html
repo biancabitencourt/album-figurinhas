@@ -11,7 +11,9 @@
 	<header>
 		<a th:href="@{/}">Início</a>
 		<a th:href="@{/figurinhas}">Figurinhas</a>
-	<header>
+		<a th:href="@{/minha-colecao}">Minha coleção</a>
+		<a th:href="@{/logout}">Sair</a>
+	</header>
 	
 	<main>
 		<h1 th:text="'Todas as figurinhas de ' + ${session.usuarioLogin}">Todas as figuorinhas</h1>					

@@ -38,4 +38,19 @@ public class ColecaoService {
 		return colecaoRepository.findByUsuario(usuario);
 	}
 	
+	public void remover(Usuario usuario, Long figurinhaId)	{
+		Figurinha figurinha = figurinhaRepository.findById(figurinhaId).orElseThrow(
+				() -> new RuntimeException("Figurinha não encontrada"));
+		
+		colecaoRepository.findByUsuarioAndFigurinha(usuario, figurinha).ifPresent(item ->	{
+			int nova = item.getQuantidade() - 1;
+			if (nova <= 0)	{
+				colecaoRepository.delete(item);
+			}
+			else	{
+				item.setQuantidade(nova);
+				colecaoRepository.save(item);
+			}
+		});
+	}
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><title>Minha coleção</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+    <header>
+        <a th:href="@{/figurinhas}">Figurinhas</a>
+        <a th:href="@{/minha-colecao}">Minha coleção</a>
+        <a th:href="@{/logout}">Sair</a>
+    </header>
+    <main>
+        <h1>Minha coleção</h1>
+        <p th:if="${colecao.isEmpty()}">Você ainda não tem figurinhas.</p>
+        <div class="grid">
+            <div class="figurinha" th:each="item : ${colecao}">
+                <span class="tag-rara" th:if="${item.figurinha.rara}">RARA</span>
+                <h3 th:text="${item.figurinha.jogador}">Nome</h3>
+                <p th:text="${item.figurinha.selecao}">Seleção</p>
+                <p>Qtd: <strong th:text="${item.quantidade}">1</strong></p>
+                <form th:action="@{/colecao/remover}" method="post">
+                    <input type="hidden" name="figurinhaId" th:value="${item.figurinha.id}">
+                    <button class="btn" type="submit">Remover 1</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
