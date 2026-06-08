@@ -8,19 +8,16 @@ public class Figurinha {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private Long id;
-	private String jogador;
-	private String selecao;
-	private boolean rara;
+	
+	@Column(unique = true)
+	private Integer numero;
 	
 	public Figurinha()	{
 	}
 	
-	public Figurinha(String jogador, String selecao, boolean rara)	{
-		this.jogador = jogador;
-		this.selecao = selecao;
-		this.rara = rara;
+	public Figurinha(Integer numero)	{
+		this.numero = numero;
 	}
 	
 	public Long getId()	{
@@ -31,27 +28,12 @@ public class Figurinha {
 		this.id = id;
 	}
 	
-	public String getJogador()	{
-		return jogador;
+	public Integer getNumero() {
+		return numero;
 	}
 	
-	public void setJogador(String jogador)	{
-		this.jogador = jogador;
+	public void setNumero(Integer numero)	{
+		this.numero = numero;
 	}
 	
-	public String getSelecao()	{
-		return selecao;
-	}
-	
-	public void setSelecao(String selecao)	{
-		this.selecao = selecao;
-	}
-	
-	public boolean isRara()	{
-		return rara;
-	}
-	
-	public void setRara(boolean rara)	{
-		this.rara = rara;
-	}
 }

@@ -1,35 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
-
 <head>
-	<meta charset="UTF-8">
-	<title>Figurinhas</title>
-	<link rel="stylesheet" th:href="@{/css/estilo.css}">
+    <meta charset="UTF-8">
+    <title>Catálogo de figurinhas</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
 </head>
-
 <body>
-	<header>
-		<a th:href="@{/}">Início</a>
-		<a th:href="@{/figurinhas}">Figurinhas</a>
-		<a th:href="@{/minha-colecao}">Minha coleção</a>
-		<a th:href="@{/logout}">Sair</a>
-	</header>
-	
-	<main>
-		<h1 th:text="'Todas as figurinhas de ' + ${session.usuarioLogin}">Todas as figuorinhas</h1>					
-		<div class="grid">
-			<div class="figurinha" th:each="f : ${figurinhas}">
-				<span class="tag-rara" th:if="${f.rara}">RARA</span>
-				<h3 th:text="${f.jogador}">Nome</h3>
-				<p th:text="${f.selecao}">Seleção</p>
-				<form th:action="@{/colecao/adicionar}" method="post">
-					<input type="hidden" name="figurinhaId" th:value="${f.id}">
-					<button class="btn" type="submit">Adicionar</button>
-				</form>
-			</div>
-		</div>
-	</main>
+    <header>
+        <a th:href="@{/}">Início</a>
+        <a th:href="@{/figurinhas}">Catálogo</a>
+        <a th:href="@{/minha-colecao}">Minha coleção</a>
+    </header>
+    <main>
+        <h1>Catálogo — 200 figurinhas</h1>
+        <p>Estas são todas as figurinhas do álbum, numeradas de 1 a 200.</p>
+        <div class="grid">
+            <div class="figurinha" th:each="f : ${figurinhas}">
+                <h3 th:text="${f.numero}">1</h3>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
-				
-			

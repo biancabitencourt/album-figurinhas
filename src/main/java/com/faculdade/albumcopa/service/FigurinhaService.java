@@ -1,6 +1,5 @@
 package com.faculdade.albumcopa.service;
 
-
 import com.faculdade.albumcopa.model.Figurinha;
 import com.faculdade.albumcopa.repository.FigurinhaRepository;
 import org.springframework.stereotype.Service;
@@ -16,6 +15,6 @@ public class FigurinhaService {
 	}
 	
 	public List<Figurinha> listarTodas()	{
-		return figurinhaRepository.findAll();
+		return figurinhaRepository.findAllByOrderByNumeroAsc();
 	}
 }

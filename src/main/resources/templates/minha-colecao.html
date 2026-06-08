@@ -6,7 +6,7 @@
 </head>
 <body>
     <header>
-        <a th:href="@{/figurinhas}">Figurinhas</a>
+        <a th:href="@{/figurinhas}">Catálogo</a>
         <a th:href="@{/minha-colecao}">Minha coleção</a>
         <a th:href="@{/logout}">Sair</a>
     </header>
@@ -15,9 +15,7 @@
         <p th:if="${colecao.isEmpty()}">Você ainda não tem figurinhas.</p>
         <div class="grid">
             <div class="figurinha" th:each="item : ${colecao}">
-                <span class="tag-rara" th:if="${item.figurinha.rara}">RARA</span>
-                <h3 th:text="${item.figurinha.jogador}">Nome</h3>
-                <p th:text="${item.figurinha.selecao}">Seleção</p>
+                <h3 th:text="${item.figurinha.numero}">1</h3>
                 <p>Qtd: <strong th:text="${item.quantidade}">1</strong></p>
                 <form th:action="@{/colecao/remover}" method="post">
                     <input type="hidden" name="figurinhaId" th:value="${item.figurinha.id}">

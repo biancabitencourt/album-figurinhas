@@ -17,13 +17,9 @@ public class CargaInicial implements CommandLineRunner {
 @Override
 public void run(String... args)	{
 	if (figurinhaRepository.count() == 0)	{
-		 figurinhaRepository.save(new Figurinha("Endrick", "Brasil", false));
-		 figurinhaRepository.save(new Figurinha("Vinicius Jr", "Brasil", true));
-		 figurinhaRepository.save(new Figurinha("Rodrygo", "Brasil", false));
-		 figurinhaRepository.save(new Figurinha("Messi", "Argentina", true));
-		 figurinhaRepository.save(new Figurinha("Julian Alvarez", "Argentina", false));
-		 figurinhaRepository.save(new Figurinha("Mbappé", "França", true));
-		 figurinhaRepository.save(new Figurinha("Griezmann", "França", false));
+		for (int i = 1; i <= 200; i++)	{
+			figurinhaRepository.save(new Figurinha(i));
+		}
 	}
   }
 }
