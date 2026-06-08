@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class ColecaoController {
@@ -20,18 +20,42 @@ public class ColecaoController {
 		this.usuarioService = usuarioService;
 	}
 	
-	@PostMapping("/colecao/adicionar")
-	public String adicionar(@RequestParam Long figurinhaId, HttpSession session)	{
-	
-	Long usuarioId = (Long) session.getAttribute("UsuarioId");
-	
-	if (usuarioId == null)	
-		return "redirect:/login";
+	@GetMapping("/minha-colecao")
+	public String minhaColecao(HttpSession session, Model model)	{
+		Long usuarioId = (Long) session.getAttribute("UsuarioId");
+		if (usuarioId == null) return "redirect:/login";
 		
-	Usuario usuario = usuarioService.buscarPorId(usuarioId);
-	colecaoService.adicionar(usuario, figurinhaId);
-	return "redirect:/figurinhas";
+		Usuario usuario = usuarioService.buscarPorId(usuarioId);
+		model.addAttribute("colecao", colecaoService.listarDoUsuario(usuario));
+		return "minha-colecao";
+ 	}
 	
+	@GetMapping("/adicionar-figurinha")
+	public String telaAdicionar(HttpSession session)	{
+		if (session.getAttribute("UsuarioId") == null)
+			return "redirect:/login";
+		return "adicionar-figurinha";
+	}
+	
+	
+	@PostMapping("/adicionar-figurinha")
+	public String adicionar(@RequestParam String entrada, 
+			HttpSession session, Model model, RedirectAttributes redirect)	{
+		Long usuarioId = (Long) session.getAttribute("UsuarioId");
+		if (usuarioId == null)
+			return "redirect:/login";
+		Usuario usuario = usuarioService.buscarPorId(usuarioId);
+		try	{
+			int quantos = colecaoService.adicionarFigurinhas(usuario, entrada);
+			redirect.addFlashAttribute("sucesso", quantos + "figurinhas adicionadas com sucesso!");
+			return "redirect:/minha-colecao";
+		}
+		catch (RuntimeException e)	{
+			model.addAttribute("erro", e.getMessage());
+			model.addAttribute("entrada", entrada);
+			return "adicionar-figurinha";
+		}
+				
 	}
 	
 	@PostMapping("/colecao/remover")
@@ -46,14 +70,4 @@ public class ColecaoController {
 			
 	}
 	
-	@GetMapping("/minha-colecao")
-	public String minhaColecao(HttpSession session, Model model)	{
-		Long usuarioId = (Long) session.getAttribute("UsuarioId");
-		if (usuarioId == null)
-			return "redirect:/login";
-		
-		Usuario usuario = usuarioService.buscarPorId(usuarioId);
-		model.addAttribute("colecao", colecaoService.listaDoUsuario(usuario));
-		return "minha-colecao";
-	}
-	}
+}

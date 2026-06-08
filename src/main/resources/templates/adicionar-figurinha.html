@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><title>Adicionar figurinhas</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+    <header>
+        <a th:href="@{/minha-colecao}">Minha coleção</a>
+        <a th:href="@{/adicionar-figurinha}">Adicionar figurinhas</a>
+        <a th:href="@{/figurinhas}">Catálogo</a>
+        <a th:href="@{/logout}">Sair</a>
+    </header>
+    <main>
+        <div class="card">
+            <h1>Adicionar figurinhas</h1>
+
+            <p th:if="${erro}" th:text="${erro}" style="color:red"></p>
+
+            <form th:action="@{/adicionar-figurinha}" method="post">
+                <p>Digite os números das figurinhas (de 1 a 200):</p>
+                <p>
+                    <input type="text" name="entrada"
+                           th:value="${entrada}"
+                           placeholder="Ex: 1, 2, 3 50 120"
+                           style="width:100%; padding:8px;" required>
+                </p>
+                <p style="color:#666; font-size:14px;">
+                    Você pode separar por <strong>vírgula</strong> ou <strong>espaço</strong>.
+                    Exemplos válidos: <code>1 2 3</code> ou <code>1,2,3</code> ou <code>1, 2 3, 4</code>
+                </p>
+                <button class="btn" type="submit">Adicionar</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
