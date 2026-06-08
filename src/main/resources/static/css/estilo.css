@@ -1,13 +1,55 @@
-{ box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans serif
-body { background: #f4f6f8; color: #222; }
-header { background: #1a4d8f; color: white; padding: 16px 24px; }
-header a { color: white; text-decoration: none; marggin-right: 16px; }
-header a:hover { text-decoration: underline; }
-main { max-width: 900px; margin: 24px auto; padding: 0 16px; }
-.card { background: white; border-radius: 8px; padding: 16px; box-shadow: 0 1px 4
-.btn { background: #1a4d8f; color: white; border: none; padding: 8px 14px;
-		border-radius: 6px; cursor: pointer; text-decoration: none; display: inlin
-.btn:hover { background: #143d70; }
+{ box-sizing: border-box; 
+	margin: 0; padding: 0; 
+	font-family: Arial, sans serif;
+}
+	
+body { 
+	background: #f4f6f8; 
+	color: #222; 
+}
+
+header { 
+	background: #1a4d8f; 
+	color: white; 
+	padding: 16px 24px; 
+}
+
+header a { 
+	color: white; 
+	text-decoration: none; 
+	marggin-right: 16px; 
+}
+
+header a:hover { 
+	text-decoration: underline; 
+}
+
+main { 
+	max-width: 900px; 
+	margin: 24px auto; 
+	padding: 0 16px; 
+}
+
+.card { 
+	background: white; 
+	border-radius: 8px; 
+	padding: 16px; 
+	box-shadow: 0 1px 4;
+}
+
+.btn { 
+	background: #1a4d8f; 
+	color: white; border: none; 
+	padding: 8px 14px;
+		border-radius: 6px; 
+		cursor: pointer; 
+		text-decoration: none; 
+		display: inlin
+}
+
+.btn:hover { 
+	background: #143d70; 
+}
 
 .grid {
     display: grid;
@@ -35,3 +77,28 @@ main { max-width: 900px; margin: 24px auto; padding: 0 16px; }
     border-radius: 4px;
     font-weight: bold;
 }
+
+.tabela { 
+	width: 100%; 
+	border-collapse: collapse; 
+	background: white;
+    border-radius: 8px; 
+	overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.1); 
+	margin-bottom: 20px; 
+}
+.tabela th, .tabela td { 
+	padding: 10px 12px; 
+	text-align: left;
+    border-bottom: 1px solid #eee; 
+}
+
+.tabela th { 
+	background: #1a4d8f; 
+	color: white; 
+}
+
+.tabela form { 
+	margin: 0; 
+}
+

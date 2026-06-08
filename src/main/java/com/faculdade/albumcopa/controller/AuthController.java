@@ -32,7 +32,7 @@ public class AuthController {
 		if (usuario.isPresent()) {
 			session.setAttribute("UsuarioId", usuario.get().getId());
 			session.setAttribute("usuarioLogin", usuario.get().getLogin());
-			return "redirect:/figurinhas";
+			return "redirect:/minha-colecao";
 		}
 		
 		model.addAttribute("erro", "LOGIN OU SENHA INVALIDOS");

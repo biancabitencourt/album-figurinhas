@@ -10,14 +10,19 @@
 <body>
 	<header>
 		<a th:href="@{/}">Inicio</a>
-		<a th:href="@{/figurinhas}">Figurinhas</a>
-		<a th:href="@{/cadastro}">Criar conta</a></p>
+		<a th:href="@{/login}">Entrar</a>
+		<a th:href="@{/cadastro}">Cadastrar</a>
 	</header>
 	<main>
 		<div class="card">
 			<h1>Album da Copa 2026</h1>
-			<p>Bem-vindo ao gerenciador de figurinhas!</p>
+			<p>Controle suas figurinhas: marque as que você tem, veja as repetidas,
+			   descubra quais faltam e acompanhe seu progresso até completar as 200.</p>
+			<p style="margin-top:12px;">
+			  <a class="btn" th:href="@{/login}">Entrar</a>
+			  <a class="btn" th:href="@{/cadastro}">Criar conta</a>
+			</p>
 		</div>
-	</main>	
+	</main>
 </body>
 </html>

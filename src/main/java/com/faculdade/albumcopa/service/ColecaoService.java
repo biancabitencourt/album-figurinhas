@@ -86,9 +86,10 @@ public class ColecaoService {
 		return colecaoRepository.findByUsuario(usuario);
 	}
 	
-	public void remover(Usuario usuario, Long figurinhaId)	{
-		Figurinha figurinha = figurinhaRepository.findById(figurinhaId)
-				.orElseThrow(() -> new RuntimeException("Figurinha não encontrada"));
+	public void removerFigurinha(Usuario usuario, int numero)	{
+		Figurinha figurinha = figurinhaRepository.findByNumero(numero)
+				.orElseThrow(() -> new RuntimeException("Figurinha não encontrada:" + numero));
+		
 		colecaoRepository.findByUsuarioAndFigurinha(usuario, figurinha).ifPresent(item ->	{
 			int nova = item.getQuantidade() - 1;
 			if (nova <= 0)	{

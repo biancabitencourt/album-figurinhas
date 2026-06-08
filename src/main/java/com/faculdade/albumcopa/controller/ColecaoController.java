@@ -59,13 +59,13 @@ public class ColecaoController {
 	}
 	
 	@PostMapping("/colecao/remover")
-	public String remover(@RequestParam Long figurinhaId, HttpSession session)	{
+	public String remover(@RequestParam int numero, HttpSession session)	{
 		Long usuarioId = (Long) session.getAttribute("UsuarioId");
 		if (usuarioId == null) 
 			return "redirect:/login";
 		
 		Usuario usuario = usuarioService.buscarPorId(usuarioId);
-		colecaoService.remover(usuario, figurinhaId);
+		colecaoService.removerFigurinha(usuario, numero);
 		return "redirect:/minha-colecao";
 			
 	}
