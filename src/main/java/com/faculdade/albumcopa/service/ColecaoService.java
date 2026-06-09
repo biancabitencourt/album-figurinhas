@@ -102,6 +102,34 @@ public class ColecaoService {
 		});
 	}
 	
+	public List<Integer> listarFaltantes(Usuario usuario)	{
+		
+		List<Integer> possuidos = listarDoUsuario(usuario).stream()
+				.map(item -> item.getFigurinha().getNumero()).toList();
+		
+		List<Integer> faltantes = new ArrayList<>();
+		for (int n = 1; n <= TOTAL_FIGURINHAS; n++)	{
+			if (!possuidos.contains(n))	{
+				faltantes.add(n);
+			}
+		}
+		return faltantes;
+	}
+	
+	public List<ColecaoFigurinha> listarRepetidas(Usuario usuario)	{
+		return listarDoUsuario(usuario).stream()
+				.filter(item -> item.getQuantidade() > 1).toList();
+	}
+	
+	public int quantidadeDistintas(Usuario usuario)	{
+		return listarDoUsuario(usuario).size();
+	}
+	
+	public int calcularProgresso(Usuario usuario) {
+		int distintas = quantidadeDistintas(usuario);
+		return (int) Math.round((distintas * 100.0) / TOTAL_FIGURINHAS);
+	}
+	
 }	
 	
 	

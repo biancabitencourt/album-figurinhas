@@ -102,3 +102,19 @@ main {
 	margin: 0; 
 }
 
+.barra { 
+	background: #ddd; 
+	border-radius: 8px; 
+	height: 20px;	
+    overflow: hidden; 
+	margin-top: 8px; 
+}
+
+.barra-preenchida { 
+	background: #2e9e4f; 
+	height: 100%; 
+	transition: width .3s; 
+}
+
+
+
