@@ -9,6 +9,8 @@
 	<main>
 		<div class="card">
 			<h1>Entrar</h1>
+			<p th:if="${sucesso}" th:text="${sucesso}" 
+			style="color:green; font-weight:bold;"></p>
 			<p th:if="${erro}" th:text="${erro}" style="color:red"></p>
 			<form th:action="@{/login}" method="post">
 				<p><input type="text" name="login" placeholder="Login" required></p>

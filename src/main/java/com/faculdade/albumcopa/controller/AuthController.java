@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class AuthController {
@@ -46,10 +47,11 @@ public class AuthController {
 	
 	@PostMapping("/cadastro")
 	public String fazerCadastro(@RequestParam String login,
-								@RequestParam String senha, Model model	)	{
-		
+								@RequestParam String senha, 
+								Model model, RedirectAttributes redirect )	{
 		try {
 			usuarioService.cadastrar(login,senha);
+			redirect.addFlashAttribute("sucesso", "Cadastro realizado com sucesso!");
 			return "redirect:/login";
 		}	
 		catch (RuntimeException e)	{
