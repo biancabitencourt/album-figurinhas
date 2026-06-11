@@ -130,6 +130,17 @@ public class ColecaoService {
 		return (int) Math.round((distintas * 100.0) / TOTAL_FIGURINHAS);
 	}
 	
+	public ResumoColecao resumirColecao(Usuario usuario) {
+	    return new ResumoColecao(
+	        listarDoUsuario(usuario),
+	        listarFaltantes(usuario),
+	        listarRepetidas(usuario),
+	        quantidadeDistintas(usuario),
+	        TOTAL_FIGURINHAS,
+	        calcularProgresso(usuario)
+	    );
+	}
+	
 }	
 	
 	

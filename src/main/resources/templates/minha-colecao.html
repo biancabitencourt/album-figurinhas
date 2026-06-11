@@ -18,23 +18,23 @@
         <p th:if="${sucesso}" th:text="${sucesso}" style="color:green; font-weight:bold;"></p>
 
         <div class="card">
-            <p>Você possui <strong th:text="${possuidas}">0</strong>
-               de <strong th:text="${total}">200</strong> figurinhas.</p>
-            <p>Progresso: <strong th:text="${progresso} + '%'">0%</strong></p>
+            <p>Você possui <strong th:text="${resumo.possuidas()}">0</strong>
+               de <strong th:text="${resumo.total()}">200</strong> figurinhas.</p>
+            <p>Progresso: <strong th:text="${resumo.progresso()} + '%'">0%</strong></p>
             <div class="barra">
-                <div class="barra-preenchida" th:style="'width:' + ${progresso} + '%'"></div>
+                <div class="barra-preenchida" th:style="'width:' + ${resumo.progresso()} + '%'"></div>
             </div>
         </div>
 
         <h2>Figurinhas possuídas</h2>
-        <p th:if="${colecao.isEmpty()}">Você ainda não tem figurinhas.
+        <p th:if="${resumo.colecao().isEmpty()}">Você ainda não tem figurinhas.
            <a th:href="@{/adicionar-figurinha}">Adicionar agora</a>.</p>
-        <table th:unless="${colecao.isEmpty()}" class="tabela">
+        <table th:unless="${resumo.colecao().isEmpty()}" class="tabela">
             <thead>
                 <tr><th>Número</th><th>Quantidade</th><th>Ações</th></tr>
             </thead>
             <tbody>
-                <tr th:each="item : ${colecao}">
+                <tr th:each="item : ${resumo.colecao()}">
                     <td th:text="${item.figurinha.numero}">1</td>
                     <td th:text="${item.quantidade}">1</td>
                     <td>
@@ -48,13 +48,13 @@
         </table>
 
         <h2>Figurinhas repetidas</h2>
-        <p th:if="${repetidas.isEmpty()}">Você ainda não possui figurinhas repetidas.</p>
-        <table th:unless="${repetidas.isEmpty()}" class="tabela">
+        <p th:if="${resumo.repetidas().isEmpty()}">Você ainda não possui figurinhas repetidas.</p>
+        <table th:unless="${resumo.repetidas().isEmpty()}" class="tabela">
             <thead>
                 <tr><th>Número</th><th>Repetidas</th></tr>
             </thead>
             <tbody>
-                <tr th:each="item : ${repetidas}">
+                <tr th:each="item : ${resumo.repetidas()}">
                     <td th:text="${item.figurinha.numero}">1</td>
                     <td th:text="${item.quantidade - 1}">0</td>
                 </tr>
@@ -62,9 +62,9 @@
         </table>
 
         <h2>Figurinhas faltantes</h2>
-        <p th:if="${faltantes.isEmpty()}">Parabéns! Álbum completo! 🎉</p>
-        <p th:unless="${faltantes.isEmpty()}"
-           th:text="${#strings.listJoin(faltantes, ', ')}">3, 4, 6, ...</p>
+        <p th:if="${resumo.faltantes().isEmpty()}">Parabéns! Álbum completo! 🎉</p>
+        <p th:unless="${resumo.faltantes().isEmpty()}"
+           th:text="${#strings.listJoin(resumo.faltantes(), ', ')}">3, 4, 6, ...</p>
     </main>
 </body>
 </html>
