@@ -1,120 +1,293 @@
-{ box-sizing: border-box; 
-	margin: 0; padding: 0; 
-	font-family: Arial, sans serif;
-}
-	
-body { 
-	background: #f4f6f8; 
-	color: #222; 
+/* =========================
+   Tema Copa do Mundo 2026
+   ========================= */
+
+:root {
+    --verde: #009739;
+    --amarelo: #ffdf00;
+    --azul: #002776;
+    --branco: #ffffff;
+    --cinza: #f4f6f8;
 }
 
-header { 
-	background: #1a4d8f; 
-	color: white; 
-	padding: 16px 24px; 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
-header a { 
-	color: white; 
-	text-decoration: none; 
-	marggin-right: 16px; 
+body {
+    background: linear-gradient(
+        135deg,
+        #e8f5e9,
+        #fffde7
+    );
+
+    color: #222;
+    min-height: 100vh;
 }
 
-header a:hover { 
-	text-decoration: underline; 
+/* =========================
+   Header
+   ========================= */
+
+header {
+    background: linear-gradient(
+        90deg,
+        var(--verde),
+        var(--azul)
+    );
+
+    padding: 16px 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
 }
 
-main { 
-	max-width: 900px; 
-	margin: 24px auto; 
-	padding: 0 16px; 
+header a {
+    color: white;
+    text-decoration: none;
+    margin-right: 18px;
+    font-weight: bold;
 }
 
-.card { 
-	background: white; 
-	border-radius: 8px; 
-	padding: 16px; 
-	box-shadow: 0 1px 4;
+header a:hover {
+    text-decoration: underline;
 }
 
-.btn { 
-	background: #1a4d8f; 
-	color: white; border: none; 
-	padding: 8px 14px;
-		border-radius: 6px; 
-		cursor: pointer; 
-		text-decoration: none; 
-		display: inlin
+/* =========================
+   Layout principal
+   ========================= */
+
+main {
+    max-width: 900px;
+    margin: 24px auto;
+    padding: 0 16px;
 }
 
-.btn:hover { 
-	background: #143d70; 
+h1 {
+    margin-bottom: 16px;
+    color: var(--azul);
 }
+
+h2 {
+    margin-top: 24px;
+    margin-bottom: 12px;
+    color: var(--verde);
+}
+
+p {
+    margin-bottom: 12px;
+}
+
+/* =========================
+   Cards
+   ========================= */
+
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+
+    border-top: 5px solid var(--amarelo);
+
+    box-shadow: 0 2px 8px rgba(0,0,0,.12);
+    margin-bottom: 20px;
+}
+
+/* =========================
+   Botões
+   ========================= */
+
+.btn {
+    background: var(--amarelo);
+    color: var(--azul);
+
+    border: none;
+    padding: 10px 16px;
+
+    border-radius: 6px;
+    cursor: pointer;
+
+    text-decoration: none;
+    display: inline-block;
+
+    font-weight: bold;
+    transition: .2s;
+}
+
+.btn:hover {
+    background: #f0cd00;
+    transform: translateY(-1px);
+}
+
+/* =========================
+   Inputs
+   ========================= */
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    font-size: 15px;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--verde);
+}
+
+/*Catálogo de figurinhas*/
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: 12px;
+    margin-top: 16px;
 }
 
 .figurinha {
     background: white;
     border-radius: 8px;
-    padding: 12px;
+    padding: 16px;
+
     text-align: center;
-    box-shadow: 0 1px 4px rgba(0,0,0,.1);
+
+    box-shadow: 0 1px 4px rgba(0,0,0,.12);
+
+    transition: .2s;
     position: relative;
+
+    border-top: 4px solid var(--verde);
+}
+
+.figurinha:hover {
+    transform: translateY(-4px);
+}
+
+.figurinha h3 {
+    color: var(--azul);
 }
 
 .tag-rara {
     position: absolute;
     top: 6px;
     right: 6px;
+
     background: gold;
     color: #333;
+
     font-size: 11px;
     padding: 2px 6px;
+
     border-radius: 4px;
     font-weight: bold;
 }
 
-.tabela { 
-	width: 100%; 
-	border-collapse: collapse; 
-	background: white;
-    border-radius: 8px; 
-	overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0,0,0,.1); 
-	margin-bottom: 20px; 
-}
-.tabela th, .tabela td { 
-	padding: 10px 12px; 
-	text-align: left;
-    border-bottom: 1px solid #eee; 
-}
+/* Tabelas */
 
-.tabela th { 
-	background: #1a4d8f; 
-	color: white; 
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+
+    background: white;
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    box-shadow: 0 1px 4px rgba(0,0,0,.1);
+
+    margin-bottom: 20px;
 }
 
-.tabela form { 
-	margin: 0; 
+.tabela th,
+.tabela td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
 }
 
-.barra { 
-	background: #ddd; 
-	border-radius: 8px; 
-	height: 20px;	
-    overflow: hidden; 
-	margin-top: 8px; 
+.tabela th {
+    background: var(--verde);
+    color: white;
 }
 
-.barra-preenchida { 
-	background: #2e9e4f; 
-	height: 100%; 
-	transition: width .3s; 
+.tabela tr:hover {
+    background: #f8f8f8;
 }
 
+/* Barra de progresso */
 
+.barra {
+    background: #ddd;
+    border-radius: 10px;
 
+    height: 24px;
+
+    overflow: hidden;
+    margin-top: 10px;
+
+    position: relative;
+}
+
+.barra-preenchida {
+    background: linear-gradient(
+        90deg,
+        var(--verde),
+        #2eb85c
+    );
+
+    height: 100%;
+
+    transition: width .4s;
+    position: relative;
+}
+
+/* Bola de futebol */
+
+.barra-preenchida::after {
+    content: "⚽";
+
+    position: absolute;
+
+    right: -12px;
+    top: -8px;
+
+    font-size: 24px;
+}
+
+/* Mensagens */
+
+.sucesso {
+    color: green;
+    font-weight: bold;
+}
+
+.erro {
+    color: red;
+    font-weight: bold;
+}
+
+/*Responsividade*/
+
+@media (max-width: 600px) {
+
+    header {
+        text-align: center;
+    }
+
+    header a {
+        display: inline-block;
+        margin: 6px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(
+            auto-fill,
+            minmax(90px, 1fr)
+        );
+    }
+}
