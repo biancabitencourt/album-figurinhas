@@ -1,4 +1,4 @@
-# album-copa-2026
+# album-figurinhas
 
 gerenciador simples de figurinhas de um album feito em Java com SpringBoot
 O usuário faz login, adiciona figurinhas por
