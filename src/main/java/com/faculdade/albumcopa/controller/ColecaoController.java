@@ -27,13 +27,7 @@ public class ColecaoController {
 		
 		Usuario usuario = usuarioService.buscarPorId(usuarioId);
 		
-		model.addAttribute("colecao", colecaoService.listarDoUsuario(usuario));
-		model.addAttribute("faltantes", colecaoService.listarFaltantes(usuario));
-		model.addAttribute("repetidas", colecaoService.listarRepetidas(usuario));
-		model.addAttribute("possuidas", colecaoService.quantidadeDistintas(usuario));
-		model.addAttribute("total", ColecaoService.TOTAL_FIGURINHAS);
-		model.addAttribute("progresso", colecaoService.calcularProgresso(usuario));
-				
+		model.addAttribute("resumo", colecaoService.resumirColecao(usuario));				
 		return "minha-colecao";
  	}
 	
